@@ -1,316 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giao Xu BX Dung Lac</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com /css?? family Poppins: wght@100;200;300;400;600;700&display swap" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+<style>
+body {
+    display: grid;
+    background-image: linear-gradient(90deg,darkgreen,brown,green);
+    background-attachment: fixed;
+    background-size: cover;
+    align-items: center;
+    margin: 20;
+    padding: 10px;
+    color: #fff;
+    font: 1rem/1 'Poppins', sans-serif;}
+.center {
+    text-align: center;}
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;}
+.video-wrapper video {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;}
 
+.flex-row {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 2px solid darkgreen;}
+.flex-row-col1 {
+    background-color: grey;
+    padding: 20px;;
+    flex: 2%;}
+.flex-row-col2 {
+    background-color: rgb(177, 172, 172);
+    padding: 10px;
+    flex:auto;}
+.flex-row-col3 {
+    background-color: grey;
+    padding: 20px;
+    flex: 83%;
+    color:pink;}
+.flex-row-col3-them {
+    background-color:lightslategray;}
+
+</style>
 </head>
 <body>
-<section class="header">
-    <nav>
-        <a href="index.html"><img src="images/logo.png"></a>
-        <div class="nav-links" id="navLinks" >
-        <i class="fa fa-times" onclick="hideMenu()"></i>     
-            <ul>
-                <li><a href="">HOME</a></1i>
-                <li><a href="">ABOUT</a></li>
-                <!-- <li><a href="">SACRAMENTS</a></1i> -->
-                <li><a href="">EDUCATION</a></li>
-                <li><a href="">MUSIC</a></li>
-            </ul>
-        </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-    </nav>
-<div class="text-box">
-    <h1>Cộng Đoàn Công Giáo<br>Gioanbaotixita Dũng Lạc</h1>
-        <p>300 Pere Megret Street<br>
-        Abbeville, Louisiana 70511-1507         </p>
-        <a href="" class="hero-btn">Welcome To Us</a>
-</div> 
+<!--DAT VIDEO CHINH------------------------------------------------------------------------->
 
-</section>
-<!--------------- GIO MUC VU ----------------------->
-<section class="course">
-    <br>
-    <h1 class="center">Giờ Mục Vụ</h1>
-    <!-- <p>Lorem van Tien dang lam web</p> -->
-
-    <div class="row">
-        <div class="course-col">
-            <h3>Mass Time</h3>
-            <table>
-                <tr>
-                    <th colspan="3">Daily Mass</th>
-                </tr>
-                <tr>
-                    <td></td><td colspan="2"><u>Monday-Friday</u></td>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>7:00 PM</td>
-                </tr>
+    <div class="video-wrapper">
+    <div class="video-wrapper-iframe">
+        <video id="video" controls>
+            <source src="videos/Nhung-tien-chi.mp4" type="video/mp4">
             
-                <tr>
-                    <td></td><td colspan="2"><u>Saturday Vigil</u></th>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>7:00 PM</td>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>8:00 PM</td>
-                </tr>
-                <tr>
-                    <td></td><td colspan="2"><u>Sunday</u></th>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>8:00 AM</td>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>10:00 AM</td>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>12:30 PM</td>
-                </tr>
+        </video>
+    </div>
+    </div>
+    <h2 class="center" id="nhung_music">Nhung's Music</h2>
+
+    <!--Dat cac video de chon-------------------------------------------------------------->
+    <div class="flex-row">
+        <div class="flex-row-col1">1</div>
+        <!-- chu y cach dat video nay se lay thumnail cua video lam anh cho pt--->    
+        <div class="flex-row-col2"><video id='cl1' onclick="play_this(this.id)" class="video" src="videos/Tim-Em-Trong-Moi-Mat(Tunurau).mp4" type="video/mp4" width="90" height="60" ></video></div>
+        <div class="flex-row-col3" id="bh1">Tìm em trong mắt môi (Tunurau)</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-row-col1">2</div>
+        <div class="flex-row-col2" ><video id='cl2' onclick="play_this(this.id)" class="video" src="videos/Sophie.mp4" type="video/mp4" width="90" height="60"></video></div>
+        <div class="flex-row-col3" id="bh2">Sophie 5 tháng (ThongThao)</div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-row-col1">3</div>
+        <div class="flex-row-col2"><video  id='cl3' onclick="play_this(this.id)" class="video" src="videos/Tim-Em-Trong-Moi-Mat(Tunurau).mp4" type="video/mp4" width="90" height="60"></video></div>
+        <div class="flex-row-col3" id="bh3">Tim-Em-Trong-Moi-Mat(Tunurau)</div>
+    </div>
+
+    <!-- DAT MA JAVASCRIPT----------------------------------------------------------------->
+
+    <script>
+        var idOfElem_luu = 0;
+        //--DN ham play_this khi click vao pt video chon thi no lay tt dem vao video chinh va play
+        function play_this(idName){
+            //lay src cua pt vid click de dem vao src cua video chinh
+            let id_video = 'cl'+idName.at(2);
+            let srcOfVideod = document.getElementById(id_video).src;
+            const video = document.getElementById('video');
+            video.src = srcOfVideod;
+            //lay ten bai hat
+            let id_baih = 'bh'+idName.at(2);
+            console.log(id_baih);
+            let tenOfBaih = document.getElementById(id_baih).innerText;
+            console.log(tenOfBaih);
+
+            //xoa mau pt video truoc do da chon va luu bang cach remove className cua no no
+            if (idOfElem_luu > 0) {
+                document.getElementById('bh'+idOfElem_luu).classList.remove("flex-row-col3-them");
+            }    
+            //to mau ten bai hat vua lay khi click bang cach them className cho no
+            document.getElementById(id_baih).classList.add("flex-row-col3-them");
+            idOfElem_luu = idName.at(2);
+
+            //cup nhat video chinh
+            const elm_nhung_music = document.getElementById('nhung_music');
+            elm_nhung_music.innerHTML = tenOfBaih;
             
-                <tr>
-                    <th colspan="3">Holy Days of Obligation</th>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>8:00 AM</td>
-                </tr>
-                <tr>
-                    <td></td><td></td><td>7:00 PM</td>
-                </tr>
-                <tr>
-                    <th colspan="3">Mass Time Around the World</th>
-                </tr>
-            
-            </table>
-                      </div>
-        <div class="course-col">
-            <h3>Giải Tội</h3>
-            <p>
-                Thứ Bảy 5:30 - 6:30 pm   <br>
-                   * 30 phút trước các Thánh Lễ hay theo hẹn.
-
-            </p>
-            <h3>Rửa Tội</h3>
-            <p>
-                Sau lễ 11:00AM mỗi Chúa Nhật đầu tháng.
-                Xin liên lạc Văn Phòng Giáo Xứ để biết thêm chi tiết:
-
-            </p>
-            <h3>Thêm Sức</h3>
-            <p>
-                Mỗi năm 1 lần vào trước Mùa Phục Sinh.
-                Xin liên lạc Văn Phòng Giáo Xứ để biết thêm chi tiết:
-
-            </p>
-
-        </div>
-        <div class="course-col">
-            <h3>Hôn Phối</h3>
-            <p>
-                Xin liên lạc với Cha Thomas Trần Thiên Ân, O.P, ít nhất 4 tháng trước ngày cưới: (832) 692-4761. 
-                Hoặc văn phòng GX để lấy hẹn với cha xứ.
-            </p>
-            <h3>Xức Dầu</h3>
-            <p>
-                Xin liên lạc Văn Phòng Giáo Xứ để biết thêm chi tiết:
-
-            </p>
-            <h3><span style="color:red">Văn phòng Giáo xứ:</span></h3>
-            <p>
-                54 Lourd Saint Abbeville LA 7777.<br>
-                Tel 228 912 5555
-
-            </p>
-
-        </div>
-    </div>
-</section>
-
-<!----------------- MUA PHUNG VU ----------------------->
-<section class="campus">
-    <h1>Mùa Phụng Vụ</h1>
-    <p>
-        <img src="images/muapv.png">
-    </p>
-    <div class="row">
-        <div class="campus-col">
-            <img src="images/muavong.png">
-            <div class="layer">
-                <h3>MUA VONG</h3>
-            </div>
-        </div>    
-        <div class="campus-col">
-            <img src="images/muags.png">
-            <div class="layer">
-                <h3>MUA GIANG SINH</h3>
-            </div>
-        </div>    
-        <div class="campus-col">
-            <img src="images/muatn.png">
-            <div class="layer">
-                <h3>MUA THUONG NIEN I</h3>
-            </div>
-        </div>    
-    </div>    
-    <div class="row">
-        <div class="campus-col">
-            <img src="images/muachay.png">
-            <div class="layer">
-                <h3>MUA CHAY</h3>
-            </div>
-        </div>    
-        <div class="campus-col">
-            <img src="images/muaps.png">
-            <div class="layer">
-                <h3>MUA PHUC SINH</h3>
-            </div>
-        </div>    
-        <div class="campus-col">
-            <img src="images/ducmelt.png">
-            <div class="layer">
-                <h3>MUA THUONG NIEN II</h3>
-            </div>
-        </div>    
-    </div>    
-
-</section>
-<!---------------- BI TICH -------------->
-<section class="facilities">
-    <h1>Bí Tích</h1>
-    <p>
-        Lorem ipsum is placeholder text commonly used in the graphic, print
-    </p>
-    <div class="row">
-        <div class="facilities-col">
-            <img src="images/ruatoi.png">
-            <h3>Rua Toi</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-        <div class="facilities-col">
-            <img src="images/themsuc.png">
-            <h3>Them Suc</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-        <div class="facilities-col">
-            <img src="images/thanhthe.png">
-            <h3>Thanh The</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="facilities-col">
-            <img src="images/giaitoi.png">
-            <h3>Giai Toi</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-        <div class="facilities-col">
-            <img src="images/xucdau.png">
-            <h3>Xuc Dau</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-        <div class="facilities-col">
-            <img src="images/honphoi.png">
-            <h3>Hon Phoi</h3>
-            <p>
-                Lorem ipsum is placeholder text commonly used in the graphic, print
-            </p>
-        </div>
-    </div>
-</section>
-<!--------------- THONG BAO ------------------->
-<section class="testimonials">
-    <h1>Thông Báo</h1>
-    <p>
-        Lorem ipsum is placeholder text commonly used in the graphic, print
-    </p>
-    <div class="row">
-        <div class="testimonial-col">
-            <img src="images/user1.jpg">
-            <div>
-                <p>
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                </p>
-                <h3>Bich Thao</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-        </div>
-        <div class="testimonial-col">
-            <img src="images/user2.jpg">
-            <div>
-                <p>
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                    Lorem ipsum is placeholder text commonly used in the graphic,
-                </p>
-                <h3>Van Tien</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-        </div>
-    </div>
-</section>
-<!------------------ LIEN LAC --------------->
-
-<section class="cta">
-    <h1>Liên Lạc</h1>
-    <a href="" class= "hero-btn">CONTACT US</a>
-
-</section>
-
-<!------------------ FOOTER --------------->
-<section class="footer">
-    <h4>About Us</h4>
-    <p>
-        Lorem ipsum is placeholder text commonly used in the graphic,
-    </p>
-    <div class="icons">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-instagram"></i>
-        <i class="fa fa-linkedin"></i>
-    </div>
-    <!-- <p>Made with vantiensg2002@yahoo.com</p> -->
-</section>
-
-<!------------------ for Javascript --------------->
-<script>
-    var navLinks= document.getElementById("navLinks");
-    function showMenu(){
-        navLinks.style.right= "0";
-    }
-    function hideMenu(){
-        navLinks.style.right= "-200px";
-    }
-
-</script>
-
+            //play video 
+            video.play();
+        }
+    //----------------------------------------------------------------------------------------    
+    </script>
 </body>
 </html>
