@@ -14,10 +14,16 @@ video{
     width:40px;
     height:30px;
 }
-.center{
-    color:rgb(216, 216, 163);
-    font-size: 16pt;
+h1{
+    color:yellow;
     text-align: center;}
+#tenbaihat{
+    text-align: center;
+    font-size: 24px;
+    color:pink;
+    font-weight: bold;
+    font-style: italic;
+}
     .video-wrapper {
         position: relative;
         padding-bottom: 56.25%;
@@ -33,89 +39,89 @@ video{
 .flex-row {
     display: flex;
     flex-wrap: nowrap;
-    font-size: 16px;
+    font-size: 20px;
     text-align: left;
+    color:rgb(216, 216, 163);
     border-bottom: 6px solid transparent;}
 .flex-row-col1 {
-    background-color: rgb(185, 183, 183);
     padding: 20px;;
     flex: 2%;}
 .flex-row-col2 {
-    background-color: rgb(177, 172, 172);
     padding: 10px;
     flex:auto;}
 .flex-row-col3 {
-    background-color: rgb(185, 183, 183);
     padding: 20px;
-    flex: 83%;
-    color:black;}
-.flex-row-col3-them {
-    background-color:lightslategray;}
+    flex: 83%;}
+.flex-row-them {
+    background-color:rgb(124, 167, 124);}
 </style>
 </head>
 <body>
 <!-- Dat tieu de va iframe------------------------------------------------------------>
-<h1 class="center">Nhung's Music</h1>
+<h1>Nhung's Music</h1>
 <div class="video-wrapper">
     <iframe id="video" src="videos/Nhung-tien-chi.mp4" frameborder="0"></iframe>
 </div>
 
 <!--Hien thi ten bai hat -------------------------------------------------------------->
-<p id="tenbaihat" class="center" ></p>
+<p id="tenbaihat"></p>
 
 
 <!--Dat cac video de chon-------------------------------------------------------------->
-<div class="flex-row">
+<div class="flex-row" id="fr1" onclick="play_this(this.id)">
     <div class="flex-row-col1">1</div>
-    <!-- chu y cach dat video nay se lay thumnail cua video lam anh cho pt--->    
-    <div class="flex-row-col2"><video id='cl1' onclick="play_this(this.id)" poster="images/h1.png" src="videos/Tim-Em-Trong-Moi-Mat(Tunurau).mp4"></video></div>
+    <div class="flex-row-col2"><video  id='cl1' poster="images/h1.png" src="videos/Tim-Em-Trong-Moi-Mat(Tunurau).mp4"></video></div>
     <div class="flex-row-col3" id="bh1">Tìm em trong mắt môi (Tunurau)</div>
 </div>
-<div class="flex-row">
+<div class="flex-row" id="fr2" onclick="play_this(this.id)">
     <div class="flex-row-col1">2</div>
-    <div class="flex-row-col2" ><video id='cl2' onclick="play_this(this.id)" poster="images/h1.png" src="videos/Sophie.mp4"></video></div>
-    <div class="flex-row-col3" id="bh2">Sophie 5 tháng (ThongThao)</div>
+    <div class="flex-row-col2" ><video id='cl2' poster="images/h1.png" src="https://www.youtube.com/embed/lcZDWo6hiuI"></video></div>
+    <div class="flex-row-col3" id="bh2">Gs University(Taya Smith 2020) </div>
 </div>
-<div class="flex-row">
+<div class="flex-row" id="fr3" onclick="play_this(this.id)">
     <div class="flex-row-col1">3</div>
-    <div class="flex-row-col2"><video id='cl3' onclick="play_this(this.id)" poster="images/h1.png" src="videos/Tim-Em-Trong-Moi-Mat(Tunurau).mp4"></video></div>
-    <div class="flex-row-col3" id="bh3">Tim-Em-Trong-Moi-Mat(Tunurau)</div>
+    <div class="flex-row-col2"><video id='cl3' poster="images/h1.png" src="videos/Bai-giang-vui(QuangHong).mp4"></video></div>
+    <div class="flex-row-col3" id="bh3">Bai-giang-vui (QuangHong)</div>
 </div>
-<div class="flex-row">
+<div class="flex-row" id="fr4" onclick="play_this(this.id)">
     <div class="flex-row-col1">4</div>
-    <div class="flex-row-col2"><video id='cl4' onclick="play_this(this.id)" poster="images/h1.png" src="https://drive.google.com/file/d/1yqn1frr2y379b6-OqMEItRSnrENQ_hzp/view?usp=sharing"></video></div>
-    <div class="flex-row-col3" id="bh4">Khong ten(VanTien)</div>
+    <div class="flex-row-col2"><video id='cl4' poster="images/h1.png" src="videos/Gitar-Hiep.mp4"></video></div>
+    <div class="flex-row-col3" id="bh4">Gita-Hiep(HiepHl)</div>
 </div>
 <!-- DAT MA JAVASCRIPT----------------------------------------------------------------->
     <script>
-        var idOfElem_luu = 0;
+        var idOfElem_luu = '0';
         //--DN ham play_this khi click vao pt video chon thi no lay tt dem vao video chinh va play
         function play_this(idName){
+            let stt = idName.at(2);
+            //-------------------------------------------
+            //xoa mau pt video truoc do da chon va luu nhung phai khac cai vua to mau
+            if (idOfElem_luu !== '0'){
+                document.getElementById('fr'+idOfElem_luu).classList.remove("flex-row-them");}
+            //to mau ten bai hat vua lay khi click bang cach them className cho no
+            document.getElementById('fr'+stt).classList.add("flex-row-them");
+            //luu sst vua to mau
+            idOfElem_luu = stt;
+            //------------------------------------------    
             //lay src cua pt vid click de dem vao src cua video chinh
-            let id_video = 'cl'+idName.at(2);
+            let id_video = 'cl'+stt;
             let srcOfVideod = document.getElementById(id_video).src;
             const video = document.getElementById('video');
             video.src = srcOfVideod;
             //lay ten bai hat
-            let id_baih = 'bh'+idName.at(2);
+            let id_baih = 'bh'+stt;
             console.log(id_baih);
             let tenOfBaih = document.getElementById(id_baih).innerText;
             console.log(tenOfBaih);
 
-            //xoa mau pt video truoc do da chon va luu bang cach remove className cua no no
-            if (idOfElem_luu > 0) {
-                document.getElementById('bh'+idOfElem_luu).classList.remove("flex-row-col3-them");
-            }    
-            //to mau ten bai hat vua lay khi click bang cach them className cho no
-            document.getElementById(id_baih).classList.add("flex-row-col3-them");
-            idOfElem_luu = idName.at(2);
-
-            //cup nhat video chinh
+            //cap nhat video chinh
             const elm_nhung_music = document.getElementById('tenbaihat');
             elm_nhung_music.innerHTML = tenOfBaih;
             
             //play video 
             //video.play();
+            
+            //-----------------
         }
 //-------------------------------------------------------------------------
 </script>
