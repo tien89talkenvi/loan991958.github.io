@@ -104,6 +104,7 @@ h2 {
             <hr>
             <div class="center"><button id="btn">SUB</button></div>
             <h2 id="subtitle"></h2>
+
             <div class="f-grid">
                 <div class="youtube-marker-l" data-start="0.0" data-end="7.0">Transcriber: Gustavo Rocha
                 Reviewer: Marssi Draw</div>
@@ -1657,6 +1658,7 @@ var lang_dich_ra;
 var voice_speak_dich;
 var rate =  Number(document.getElementById('vnoi').innerHTML).toFixed(1);   
 var text = '';
+var currentIndex=0;
 //tao menu select_target_dialect lang dich ra tu dong dich 
 let l_target_language = ['Danish', 'English', 'French', 'German', 'Italian', 'Japanese', 'Korean', 'Mexico', 'Nederlands', 'Rusian', 'Taiwan', 'Thai', 'Vietnamese']; 
 let l_target_voices = ['da-DK', 'en-US', 'fr-FR', 'de-DE', 'it-IT', 'ja-JP', 'ko-KR', 'es-MX', 'nl-NL', 'ru-RU', 'zh-TW', 'th-TH', 'vi-VN']; 
@@ -1884,8 +1886,9 @@ function UpdateMarkers() {
             if (marker.displayed === false){
                 text = marker.dom.innerText;
                 currentIndex = i;
-
-                read_subtitle(text);
+                if (currentIndex > 0) {
+                    read_subtitle(text);
+                }    
                 console.log(text);
                 document.getElementById('subtitle').innerHTML = text;
                 marker.displayed = true;
@@ -1901,8 +1904,16 @@ function UpdateMarkers() {
     });
 }
 //----------------
+//document.getElementById('playButton').addEventListener('click', () => {
+//    // Chỉ phát âm thanh sau khi người dùng nhấp chuột
+//    if (currentIndex === 0) {
+//        readSubtitle();
+//    }
+//});
 
-            </script>
+//----------------
 
-        </body>
-        </html>
+</script>
+
+</body>
+</html>
