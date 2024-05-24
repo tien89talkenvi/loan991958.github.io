@@ -96,9 +96,12 @@ h2 {
                 Voice &nbsp; <select id="select_target_language" onchange ="active_target_lang()"></select>&emsp;<span id="time"></span>
             </div><br>
             <div class="rateread">
+                <button id="read_sub">Read</button>&emsp; &emsp; 
                 <button id="trudi" onclick="tru1()">-</button>&emsp; &emsp; 
                 <button id="vnoi">2.0</button>&emsp; &emsp; 
-                <button id="congthem" onclick="cong1()">+</button>
+                <button id="congthem" onclick="cong1()">+</button>&emsp; &emsp;
+                <button id="listen_sub" onclick="Stop_speak()">Listen</button>
+
             </div>
 
             <hr>
@@ -1744,23 +1747,6 @@ function t_translate(lang_source, lang_dich_ra) {
     });
 }
 //---------------------------
-function read_subtitle(text){
-    rate = Number(document.getElementById('vnoi').innerHTML).toFixed(1);
-    var msg     = new SpeechSynthesisUtterance();
-    msg.volume = 1;
-    msg.rate = rate; // 0 to 1, does not seem to work
-    msg.lang = voice_speak_dich;
-    msg.text = text;
-    msg.onend = () => {
-        // Chuyển đến phụ đề tiếp theo sau khi đọc xong
-        currentIndex++;
-        if (currentIndex < 100) {
-            setTimeout(readSubtitle, 100); // Đợi một giây trước khi đọc phụ đề tiếp theo
-        }
-    };
-
-    speechSynthesis.speak(msg);
-}
 //------------------
 function cong1(){
     rate =  Number(document.getElementById('vnoi').innerHTML).toFixed(1);
@@ -1788,6 +1774,7 @@ btn_elm.onclick = function(){
         for ( var i = 0; i < el.length; i ++ ) {
             el[i].style.fontSize = "14pt";
         }
+        chuanBiDoc();
     } else {   
         var el = document.querySelectorAll(".youtube-marker-l");
         for ( var i = 0; i < el.length; i ++ ) {
@@ -1864,15 +1851,15 @@ document.onreadystatechange = () => {
         // Init Markers
         MarkersInit(markers);
         // Register On Click Event Handler
-        var elements = document.querySelectorAll('.youtube-marker-r');
-        Array.prototype.forEach.call(elements, function(el, i) {
-            el.onclick = function() {
+        //var elements = document.querySelectorAll('.youtube-marker-r');
+        //Array.prototype.forEach.call(elements, function(el, i) {
+        //    el.onclick = function() {
                 // Get Data Attribute
-                var pos = el.dataset.start;
+        //        var pos = el.dataset.start;
                 // Seek
-                player.seekTo(pos);
-            }
-        });
+        //        player.seekTo(pos);
+        //    }
+        //});
     } // Document Complete
 }; // Document Ready State Change
 //--------------------------
@@ -1886,7 +1873,7 @@ function UpdateMarkers() {
             if (marker.displayed === false){
                 text = marker.dom.innerText;
                 currentIndex = i;
-                if (currentIndex > 0) {
+                if (currentIndex >= 0) {
                     read_subtitle(text);
                 }    
                 console.log(text);
@@ -1904,14 +1891,60 @@ function UpdateMarkers() {
     });
 }
 //----------------
-//document.getElementById('playButton').addEventListener('click', () => {
-//    // Chỉ phát âm thanh sau khi người dùng nhấp chuột
-//    if (currentIndex === 0) {
-//        readSubtitle();
-//    }
-//});
-
+function chuanBiDoc(){
+    var elements = document.querySelectorAll('.youtube-marker-r');
+    Array.prototype.some.call(elements, function(el, i) {
+        el.onclick = function() {
+            if (k % 2 === 1){
+                console.log(i);
+                for ( var j = i; j < elements.length; j ++ ) {
+                    let txt = elements[j].innerText;
+                    read_divSub(txt);
+                }
+            }
+        }
+    });
+    
+}
 //----------------
+function read_subtitle(text){
+    rate = Number(document.getElementById('vnoi').innerHTML).toFixed(1);
+    var msg     = new SpeechSynthesisUtterance();
+    msg.volume = 1;
+    msg.rate = rate; // 0 to 1, does not seem to work
+    msg.lang = voice_speak_dich;
+    msg.text = text;
+    speechSynthesis.speak(msg);
+}
+//-----------------
+function stop() {
+  window.speechSynthesis.cancel();
+  // Safari doesn't fire the 'end' event when cancelling, so call handler manually
+  handleEnd();
+}
+//---------------------------------------------------------------------
+document.getElementById("read_sub").addEventListener('click', () => {
+    //alert('read_sub');
+    read_subtitle(text);
+});
+//---------------------------------------------------------------------
+document.getElementById("listen_sub").addEventListener('click', () => {
+    alert('listen_sub');
+    //window.speechSynthesis.cancel();
+    // Safari doesn't fire the 'end' event when cancelling, so call handler manually
+    //handleEnd();
+
+});
+//----------------
+function handleEnd() {
+    //playEl.disabled = false;
+    //pauseEl.disabled = true;
+    //stopEl.disabled = true;
+  
+    // reset text to remove mark
+    //textEl.innerHTML = text;
+    alert('chua soan');
+}
 
 </script>
 
