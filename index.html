@@ -96,11 +96,11 @@ h2 {
                 Voice &nbsp; <select id="select_target_language" onchange ="active_target_lang()"></select>&emsp;<span id="time"></span>
             </div><br>
             <div class="rateread">
-                <button id="read_sub">Read</button>&emsp; &emsp; 
+                <button id="read_sub">Reactive</button>&emsp; &emsp; 
                 <button id="trudi" onclick="tru1()">-</button>&emsp; &emsp; 
                 <button id="vnoi">2.0</button>&emsp; &emsp; 
                 <button id="congthem" onclick="cong1()">+</button>&emsp; &emsp;
-                <button id="listen_sub" onclick="Stop_speak()">Listen</button>
+                <button id="stop_read">Stop</button>&emsp;
 
             </div>
 
@@ -1662,6 +1662,9 @@ var voice_speak_dich;
 var rate =  Number(document.getElementById('vnoi').innerHTML).toFixed(1);   
 var text = '';
 var currentIndex=0;
+const readSubEl = document.getElementById('read_sub');
+const stopReadEl = document.getElementById('stop_read');
+
 //tao menu select_target_dialect lang dich ra tu dong dich 
 let l_target_language = ['Danish', 'English', 'French', 'German', 'Italian', 'Japanese', 'Korean', 'Mexico', 'Nederlands', 'Rusian', 'Taiwan', 'Thai', 'Vietnamese']; 
 let l_target_voices = ['da-DK', 'en-US', 'fr-FR', 'de-DE', 'it-IT', 'ja-JP', 'ko-KR', 'es-MX', 'nl-NL', 'ru-RU', 'zh-TW', 'th-TH', 'vi-VN']; 
@@ -1874,7 +1877,10 @@ function UpdateMarkers() {
                 text = marker.dom.innerText;
                 currentIndex = i;
                 if (currentIndex >= 0) {
-                    read_subtitle(text);
+                    readSubEl.addEventListener('click', read_sub);
+                    stopReadEl.addEventListener('click', stop_read);
+                    read_sub(text);
+
                 }    
                 console.log(text);
                 document.getElementById('subtitle').innerHTML = text;
@@ -1891,51 +1897,6 @@ function UpdateMarkers() {
     });
 }
 //----------------
-function chuanBiDoc(){
-    var elements = document.querySelectorAll('.youtube-marker-r');
-    Array.prototype.some.call(elements, function(el, i) {
-        el.onclick = function() {
-            if (k % 2 === 1){
-                console.log(i);
-                for ( var j = i; j < elements.length; j ++ ) {
-                    let txt = elements[j].innerText;
-                    read_divSub(txt);
-                }
-            }
-        }
-    });
-    
-}
-//----------------
-function read_subtitle(text){
-    rate = Number(document.getElementById('vnoi').innerHTML).toFixed(1);
-    var msg     = new SpeechSynthesisUtterance();
-    msg.volume = 1;
-    msg.rate = rate; // 0 to 1, does not seem to work
-    msg.lang = voice_speak_dich;
-    msg.text = text;
-    speechSynthesis.speak(msg);
-}
-//-----------------
-function stop() {
-  window.speechSynthesis.cancel();
-  // Safari doesn't fire the 'end' event when cancelling, so call handler manually
-  handleEnd();
-}
-//---------------------------------------------------------------------
-document.getElementById("read_sub").addEventListener('click', () => {
-    //alert('read_sub');
-    read_subtitle(text);
-});
-//---------------------------------------------------------------------
-document.getElementById("listen_sub").addEventListener('click', () => {
-    alert('listen_sub');
-    //window.speechSynthesis.cancel();
-    // Safari doesn't fire the 'end' event when cancelling, so call handler manually
-    //handleEnd();
-
-});
-//----------------
 function handleEnd() {
     //playEl.disabled = false;
     //pauseEl.disabled = true;
@@ -1943,9 +1904,44 @@ function handleEnd() {
   
     // reset text to remove mark
     //textEl.innerHTML = text;
-    alert('chua soan');
+    console.log('chua soan');
 }
+//-----------------------
+function read_sub(text) {
+    var msg     = new SpeechSynthesisUtterance();
+    rate = Number(document.getElementById('vnoi').innerHTML).toFixed(1);
+    msg.volume = 1;
+    msg.rate = rate; // 0 to 1, does not seem to work
+    msg.lang = voice_speak_dich;
+    msg.text = text;
+    speechSynthesis.speak(msg);
+    //readSubEl.disabled = true;
+    //stopReadEl.disabled = false;
 
+}
+//-------------------
+function stop_read() {
+    window.speechSynthesis.cancel();
+    // Safari doesn't fire the 'end' event when cancelling, so call handler manually
+    //handleEnd();
+    //readSubEl.disabled = false;
+    //stopReadEl.disabled = true;
+
+}
+//-------------
+function handleStart() {
+    //readSubEl.disabled = true;
+    //stopReadEl.disabled = false;
+    console.log('chua soan');
+
+}
+//-----------------------
+function handleResume() {
+    //readSubEl.disabled = true;
+    //stopReadEl.disabled = false;
+    console.log('chua soan');
+}
+//---------------------
 </script>
 
 </body>
