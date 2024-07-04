@@ -530,11 +530,10 @@ function xuliUrlNhap(){
   }, "500");
 
 }
-//-------
+//-----------------------------------------------------------------
 function gettf1(){
   document.getElementById("player").src="icons/Rajio_taiso_1.mp4";
 }
-//------------------------------
 function gettf2(){
   document.getElementById("player").src="icons/TD10P.mp4";
 }
