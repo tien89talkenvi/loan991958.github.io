@@ -489,31 +489,22 @@ function get_Text_From() {
     document.getElementById("datUrlYt").innerHTML="";
     document.getElementById("player").src = "icons/freevoicetext.webp";
   }  
-
-  if (y[x].text=="1. Enter text") {
+  if (y[x].text.includes("1.")) {
     document.getElementById("getTextFrom1").click();
-  }  
-  if (y[x].text=="2. Txt file") {
+  }
+  if (y[x].text.includes("2.")) {
     document.getElementById("getTextFrom2").click();
   }  
-  if (y[x].text=="3. Pdf file") {
+  if (y[x].text.includes("3.")) {
     document.getElementById("getTextFrom3").click();
   }  
-  if (y[x].text=="4. Word file") {
+  if (y[x].text.includes("4.")) {
     document.getElementById("getTextFrom4").click();
   }  
-  if (y[x].text=="5. Image file") {
+  if (y[x].text.includes("5.")) {
     document.getElementById("getTextFrom5").click();
   }  
-  if (y[x].text=="6. Url youtube video") {
-    document.getElementById("getTextFrom6").click();
-  }  
-  if (y[x].text.includes("7.")) {
-    document.getElementById("getTextFrom7").click();
-  }
-  if (y[x].text.includes("8.")) {
-    document.getElementById("getTextFrom8").click();
-  }  
+
   
 }
 //---------
@@ -540,14 +531,23 @@ function xuliUrlNhap(){
 
 }
 //-------
-function gettf7_tducvideo(){
+function gettf1(){
   document.getElementById("player").src="icons/Rajio_taiso_1.mp4";
 }
 //------------------------------
-function gettf8_tducvideo8(){
+function gettf2(){
   document.getElementById("player").src="icons/TD10P.mp4";
-
 }
+function gettf3(){
+  document.getElementById("player").src="icons/td_toi_nam_chau.mp4";
+}
+function gettf4(){
+  document.getElementById("player").src="icons/Td_ta_tay_all.mp4";
+}
+function gettf5(){
+  document.getElementById("player").src="icons/Td_ta_tay_leg.mp4";
+}
+
 //--------------
 function gettf1_copypaste(){
   //alert('1');
