@@ -1,0 +1,154 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* muon tong khac thi thay trong body va f-grid-rl bang */
+
+/* XANH DA TROI = background-image: linear-gradient(-45deg, #74ebd5, #9face6); */
+/* XANH LA CAY = background-image: linear-gradient(-45deg, #f4d03f, #16a085); */
+/* TIM TIM  =  background-image: linear-gradient(45deg, #4158d0, #c850c0, #ffcc70); */
+
+body {
+    display: grid;
+    background-image: linear-gradient(45deg, #4158d0, #c850c0, #ffcc70);
+
+    background-attachment: fixed;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    color: #fff;
+    font: 1rem/1 'Poppins', sans-serif;
+}
+.wrapper {
+    display: grid;
+    gap: 4px;
+    width: 600px;
+    max-width: calc(100vw - 0px);
+    padding: 20x;
+    font-size: 16px;
+    border-radius: 0px;
+    background-color: #0003;
+}
+#wrapper-text {
+    display: grid;
+    gap: 4px;
+    width: 600px;
+    max-width: calc(100vw - 0px);
+    padding: 14px;
+    background-color: #0003}
+#sophie {
+    display: grid;
+    justify-content: center;
+    }
+.f-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0.0rem;
+    flex-flow: row wrap;}
+
+.properties {
+    display: grid;
+    grid-template-columns: max-content minmax(0, auto) 40px;
+    gap: 10px;
+    padding:20px 40px 10px 40px;
+    background-color: #0003;
+    font-size: 16px;
+    border-radius: 0px;
+    color: lightgreen;
+    }
+.properties2 {
+    display: grid;
+    grid-template-columns: max-content minmax(0, auto) 40px;
+    gap: 20px;
+    padding: 20px;
+    background-color: #0005;
+    font-size: 16px;
+    border-radius: 0px;
+    color: lightblue;
+    }
+.buttons1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    margin-top: 2px;
+    padding-top: 2px;
+    }
+.buttons2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    margin-top: 2px;
+    padding-top: 2px;
+    }
+
+.buttons4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 16px;
+    border-top: 1px solid #fff3;
+    }
+button {
+    padding: 5px;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    color: #fff;
+    background-color: rgba(16, 16, 17, 0.253);
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    }
+
+button:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+.center{text-align: center;
+    color: yellow}
+#t2, #t1 {
+    display: block;
+    font-size: 30px;
+    line-height: 1.5;}
+textarea {
+    font-family: Arial;
+    font-size: 20px;
+    background-color: rgb(226, 247, 236);}
+.alignL { text-align: left; color:lightgreen;}
+.alignC { text-align: center; color:pink;}
+.alignR { text-align: right; color:orange;}
+#start_img, #listen_img {
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+}
+#start_button, #listen_button {
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+}
+#source-languages{color:lightyellow; background-color: green; }
+#target-languages{color:lightyellow; background-color: green; }
+
+.f-grid {display: flex;justify-content: space-between;margin-left:-0.5rem;flex-flow: row wrap;}
+.f-grid-coll {flex: 4 4;background-color:none; margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
+.f-grid-colr {flex: 4 4;color:yellow;background-color: none; margin-left: 0.5rem;margin-bottom: 1rem;padding: 1rem;font-size: 14pt;}
+
+.f-gridn {display: flex;justify-content: space-between;margin-left:0rem;flex-flow: row wrap;}
+.youtube-marker-l {text-align:left; flex: 4 4;background-color:none; margin-left: 0.5rem;margin-bottom: 0.2rem;padding: 0.2rem;font-size: 12pt;}
+.youtube-marker-r {text-align:left;flex: 4 4;color:yellow;background-color: none; margin-left: 0.5rem;margin-bottom: 0.2rem;padding: 0.2rem;font-size: 12pt;}
+
+#info{color:pink;margin-left: 1rem;}
+#icontieude_img{
+    width:100%;
+    height:6%;
+    border-radius: 0%;
+}
+mark {color: #000; background-color: lightgreen}
+#voice{padding-left: 1rem;}
+/* xanh la cay mo cho f-grid-lr = rgba(144, 192, 96, 0.883) */
+/* vang nghe lat cho f-grid-collr = #f7e6cd */
+#datUrlYt{text-align: center;}
